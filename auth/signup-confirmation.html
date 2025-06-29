@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to RouteSurvey - Sign Up Complete</title>
-    <meta name="description" content="Your RouteSurvey account has been created successfully.">
+    <title>Verify Your Email - RouteSurvey</title>
+    <meta name="description" content="Please verify your email address to complete your RouteSurvey account setup.">
     
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -109,55 +109,57 @@
     <!-- Main Content -->
     <main class="pt-24 pb-16">
         <div class="container mx-auto px-4 md:px-8 max-w-2xl">
-            <!-- Confirmation Card -->
+            <!-- Progress Bar -->
+            <div class="mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Step 2 of 3</span>
+                    <span class="text-sm font-medium text-primary-600 dark:text-primary-400">Email Verification</span>
+                </div>
+                <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-2 rounded-full" style="width: 66%"></div>
+                </div>
+            </div>
+
+            <!-- Email Confirmation Content -->
             <div class="bg-white dark:bg-dark-800 rounded-xl shadow-lg p-8 md:p-12 text-center">
-                <!-- Success Icon -->
-                <div class="w-20 h-20 bg-primary-50 dark:bg-dark-700 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-check-circle text-4xl text-primary-600 dark:text-primary-400"></i>
+                <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-envelope text-2xl text-primary-600 dark:text-primary-400"></i>
                 </div>
-
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Welcome to RouteSurvey!</h1>
-                <p class="text-gray-600 dark:text-gray-400 mb-8">Your account has been created successfully. We've sent a confirmation email to <span id="user-email" class="font-medium"></span>.</p>
-
-                <!-- Selected Plan -->
-                <div class="bg-primary-50 dark:bg-dark-700 rounded-lg p-6 mb-8">
-                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Your Selected Plan</h2>
-                    <div class="bg-white dark:bg-dark-800 rounded-lg p-6 shadow-sm">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 id="plan-name" class="text-xl font-bold text-primary-700 dark:text-primary-400"></h3>
-                            <span id="plan-price" class="text-2xl font-bold text-gray-900 dark:text-white"></span>
+                
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Check your email</h1>
+                <p class="text-gray-600 dark:text-gray-400 mb-6">We've sent a verification link to <span id="user-email" class="font-semibold text-primary-600 dark:text-primary-400"></span></p>
+                
+                <div class="bg-gray-50 dark:bg-dark-700 rounded-lg p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">What's next?</h3>
+                    <div class="space-y-3 text-left">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-primary-600 dark:bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
+                            <p class="text-gray-600 dark:text-gray-400">Click the verification link in your email</p>
                         </div>
-                        <ul id="plan-features" class="space-y-3 text-gray-600 dark:text-gray-400 text-left">
-                            <!-- Features will be dynamically inserted here -->
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Next Steps -->
-                <div class="space-y-6">
-                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Next Steps</h2>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-white dark:bg-dark-800 p-6 rounded-lg border border-gray-200 dark:border-dark-700">
-                            <i class="fas fa-envelope text-2xl text-primary-600 dark:text-primary-400 mb-4"></i>
-                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Verify Your Email</h3>
-                            <p class="text-gray-600 dark:text-gray-400">Check your inbox for a verification link to activate your account.</p>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-primary-600 dark:bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
+                            <p class="text-gray-600 dark:text-gray-400">Your email will be verified automatically</p>
                         </div>
-                        <div class="bg-white dark:bg-dark-800 p-6 rounded-lg border border-gray-200 dark:border-dark-700">
-                            <i class="fas fa-book text-2xl text-primary-600 dark:text-primary-400 mb-4"></i>
-                            <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Read the Documentation</h3>
-                            <p class="text-gray-600 dark:text-gray-400">Learn how to get started with RouteSurvey in our comprehensive guide.</p>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 bg-primary-600 dark:bg-primary-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
+                            <p class="text-gray-600 dark:text-gray-400">Choose your plan and complete setup</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="mt-8 space-y-4">
-                    <a href="../dashboard.html" class="block w-full bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md transition duration-300">
-                        Go to Dashboard
-                    </a>
-                    <a href="../features.html" class="block w-full bg-white dark:bg-dark-800 hover:bg-gray-50 dark:hover:bg-dark-700 text-primary-700 dark:text-primary-400 font-medium py-3 px-6 rounded-md border border-primary-200 dark:border-dark-600 transition duration-300">
-                        Explore Features
-                    </a>
+                <div class="space-y-4">
+                    <button id="resend-btn" class="w-full bg-gray-100 dark:bg-dark-700 hover:bg-gray-200 dark:hover:bg-dark-600 text-gray-700 dark:text-gray-300 font-medium py-3 px-6 rounded-md transition duration-300">
+                        <i class="fas fa-paper-plane mr-2"></i>Resend verification email
+                    </button>
+                    
+                    <button id="continue-btn" class="w-full bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md transition duration-300 hidden">
+                        Continue to Plan Selection
+                    </button>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-gray-200 dark:border-dark-700">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Didn't receive the email? Check your spam folder or try a different email address.</p>
+                    <a href="signup.html" class="text-primary-600 dark:text-primary-400 hover:underline text-sm">Back to signup</a>
                 </div>
             </div>
         </div>
@@ -179,101 +181,62 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Load user data from localStorage
-        document.addEventListener('DOMContentLoaded', () => {
-            const signupData = JSON.parse(localStorage.getItem('signupData') || '{}');
+        // Get user email from localStorage and display it
+        const signupData = JSON.parse(localStorage.getItem('signupData') || '{}');
+        if (signupData.email) {
+            document.getElementById('user-email').textContent = signupData.email;
+        } else {
+            // If no email found, redirect back to signup
+            window.location.href = 'signup.html';
+        }
+
+        // Resend verification email
+        document.getElementById('resend-btn').addEventListener('click', () => {
+            const btn = document.getElementById('resend-btn');
+            const originalText = btn.innerHTML;
             
-            // Display user email
-            document.getElementById('user-email').textContent = signupData.email || 'your email';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            btn.disabled = true;
             
-            // Display plan details
-            const planName = document.getElementById('plan-name');
-            const planPrice = document.getElementById('plan-price');
-            const planFeatures = document.getElementById('plan-features');
-            
-            if (signupData.recommendedPlan) {
-                planName.textContent = signupData.recommendedPlan;
+            // Simulate sending email
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i>Email sent!';
+                btn.className = 'w-full bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 font-medium py-3 px-6 rounded-md transition duration-300';
                 
-                // Set price based on plan
-                switch (signupData.recommendedPlan) {
-                    case 'Starter':
-                        planPrice.textContent = '$99/month';
-                        planFeatures.innerHTML = `
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Up to 5 routes per month
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Basic GPS integration
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Standard reports
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Email support
-                            </li>
-                        `;
-                        break;
-                    case 'Professional':
-                        planPrice.textContent = '$299/month';
-                        planFeatures.innerHTML = `
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Up to 20 routes per month
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Advanced GPS integration
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Custom reports
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Priority support
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                API access
-                            </li>
-                        `;
-                        break;
-                    case 'Enterprise':
-                        planPrice.textContent = 'Custom';
-                        planFeatures.innerHTML = `
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Unlimited routes
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Full GPS integration
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Custom reporting suite
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                24/7 priority support
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Full API access
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-primary-600 dark:text-primary-400 mr-2"></i>
-                                Dedicated account manager
-                            </li>
-                        `;
-                        break;
-                }
-            }
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.className = 'w-full bg-gray-100 dark:bg-dark-700 hover:bg-gray-200 dark:hover:bg-dark-600 text-gray-700 dark:text-gray-300 font-medium py-3 px-6 rounded-md transition duration-300';
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
         });
+
+        // Continue button (simulates email verification)
+        document.getElementById('continue-btn').addEventListener('click', () => {
+            window.location.href = 'signup-step2.html';
+        });
+
+        // Simulate email verification after 5 seconds (for demo purposes)
+        setTimeout(() => {
+            const continueBtn = document.getElementById('continue-btn');
+            const resendBtn = document.getElementById('resend-btn');
+            
+            continueBtn.classList.remove('hidden');
+            resendBtn.classList.add('hidden');
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 mb-6';
+            successMessage.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                    <p class="text-green-700 dark:text-green-300">Email verified successfully! You can now continue to plan selection.</p>
+                </div>
+            `;
+            
+            const contentDiv = document.querySelector('.bg-white.dark\\:bg-dark-800.rounded-xl');
+            contentDiv.insertBefore(successMessage, contentDiv.querySelector('.space-y-4'));
+        }, 5000);
     </script>
 </body>
 </html> 

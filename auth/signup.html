@@ -112,11 +112,11 @@
             <!-- Progress Bar -->
             <div class="mb-8">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Step 1 of 2</span>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Step 1 of 3</span>
                     <span class="text-sm font-medium text-primary-600 dark:text-primary-400">Account Setup</span>
                 </div>
                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                    <div class="bg-primary-600 dark:bg-primary-500 h-2 rounded-full" style="width: 50%"></div>
+                    <div class="bg-primary-600 dark:bg-primary-500 h-2 rounded-full" style="width: 33%"></div>
                 </div>
             </div>
 
@@ -125,7 +125,7 @@
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Create your account</h1>
                 <p class="text-gray-600 dark:text-gray-400 mb-8">Join RouteSurvey to start managing your heavy haul routes efficiently.</p>
 
-                <form id="signup-form" action="signup-step2.html" class="space-y-6">
+                <form id="signup-form" class="space-y-6">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="first-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">First Name</label>
@@ -143,6 +143,64 @@
                         <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                         <input type="email" id="email" name="email" required
                             class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                        <p id="email-status" class="mt-1 text-sm hidden"></p>
+                    </div>
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" required
+                                class="w-full px-4 py-2 pr-10 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                            <button type="button" id="toggle-password" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Password Strength Indicator -->
+                        <div class="mt-2">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="flex-1 bg-gray-200 dark:bg-dark-600 rounded-full h-2">
+                                    <div id="password-strength-bar" class="h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                                <span id="password-strength-text" class="text-sm font-medium text-gray-500 dark:text-gray-400">Weak</span>
+                            </div>
+                            
+                            <!-- Password Requirements -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                <div class="flex items-center" id="req-length">
+                                    <i class="fas fa-circle text-gray-300 dark:text-gray-600 mr-2"></i>
+                                    <span class="text-gray-600 dark:text-gray-400">At least 8 characters</span>
+                                </div>
+                                <div class="flex items-center" id="req-uppercase">
+                                    <i class="fas fa-circle text-gray-300 dark:text-gray-600 mr-2"></i>
+                                    <span class="text-gray-600 dark:text-gray-400">One uppercase letter</span>
+                                </div>
+                                <div class="flex items-center" id="req-lowercase">
+                                    <i class="fas fa-circle text-gray-300 dark:text-gray-600 mr-2"></i>
+                                    <span class="text-gray-600 dark:text-gray-400">One lowercase letter</span>
+                                </div>
+                                <div class="flex items-center" id="req-number">
+                                    <i class="fas fa-circle text-gray-300 dark:text-gray-600 mr-2"></i>
+                                    <span class="text-gray-600 dark:text-gray-400">One number</span>
+                                </div>
+                                <div class="flex items-center" id="req-special">
+                                    <i class="fas fa-circle text-gray-300 dark:text-gray-600 mr-2"></i>
+                                    <span class="text-gray-600 dark:text-gray-400">One special character</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="confirm-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Confirm Password</label>
+                        <div class="relative">
+                            <input type="password" id="confirm-password" name="confirm-password" required
+                                class="w-full px-4 py-2 pr-10 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                            <button type="button" id="toggle-confirm-password" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <p id="password-match" class="mt-1 text-sm hidden"></p>
                     </div>
 
                     <div>
@@ -175,8 +233,8 @@
                         </div>
                     </div>
 
-                    <button type="submit"
-                        class="w-full bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md transition duration-300">
+                    <button type="submit" id="submit-btn"
+                        class="w-full bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                         Continue
                     </button>
                 </form>
@@ -206,6 +264,150 @@
             mobileMenu.classList.toggle('hidden');
         });
 
+        // Password visibility toggle
+        document.getElementById('toggle-password').addEventListener('click', () => {
+            const passwordInput = document.getElementById('password');
+            const icon = document.querySelector('#toggle-password i');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggle-confirm-password').addEventListener('click', () => {
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const icon = document.querySelector('#toggle-confirm-password i');
+            if (confirmPasswordInput.type === 'password') {
+                confirmPasswordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                confirmPasswordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+
+        // Password strength validation
+        function validatePassword(password) {
+            const requirements = {
+                length: password.length >= 8,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password),
+                special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+            };
+
+            // Update requirement indicators
+            document.getElementById('req-length').innerHTML = 
+                `<i class="fas fa-${requirements.length ? 'check text-green-500' : 'circle text-gray-300 dark:text-gray-600'} mr-2"></i>
+                 <span class="text-gray-600 dark:text-gray-400">At least 8 characters</span>`;
+            
+            document.getElementById('req-uppercase').innerHTML = 
+                `<i class="fas fa-${requirements.uppercase ? 'check text-green-500' : 'circle text-gray-300 dark:text-gray-600'} mr-2"></i>
+                 <span class="text-gray-600 dark:text-gray-400">One uppercase letter</span>`;
+            
+            document.getElementById('req-lowercase').innerHTML = 
+                `<i class="fas fa-${requirements.lowercase ? 'check text-green-500' : 'circle text-gray-300 dark:text-gray-600'} mr-2"></i>
+                 <span class="text-gray-600 dark:text-gray-400">One lowercase letter</span>`;
+            
+            document.getElementById('req-number').innerHTML = 
+                `<i class="fas fa-${requirements.number ? 'check text-green-500' : 'circle text-gray-300 dark:text-gray-600'} mr-2"></i>
+                 <span class="text-gray-600 dark:text-gray-400">One number</span>`;
+            
+            document.getElementById('req-special').innerHTML = 
+                `<i class="fas fa-${requirements.special ? 'check text-green-500' : 'circle text-gray-300 dark:text-gray-600'} mr-2"></i>
+                 <span class="text-gray-600 dark:text-gray-400">One special character</span>`;
+
+            // Calculate strength
+            const metRequirements = Object.values(requirements).filter(Boolean).length;
+            const strengthBar = document.getElementById('password-strength-bar');
+            const strengthText = document.getElementById('password-strength-text');
+
+            if (metRequirements <= 2) {
+                strengthBar.style.width = '25%';
+                strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-red-500';
+                strengthText.textContent = 'Weak';
+                strengthText.className = 'text-sm font-medium text-red-500';
+            } else if (metRequirements <= 3) {
+                strengthBar.style.width = '50%';
+                strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-yellow-500';
+                strengthText.textContent = 'Fair';
+                strengthText.className = 'text-sm font-medium text-yellow-500';
+            } else if (metRequirements <= 4) {
+                strengthBar.style.width = '75%';
+                strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-blue-500';
+                strengthText.textContent = 'Good';
+                strengthText.className = 'text-sm font-medium text-blue-500';
+            } else {
+                strengthBar.style.width = '100%';
+                strengthBar.className = 'h-2 rounded-full transition-all duration-300 bg-green-500';
+                strengthText.textContent = 'Strong';
+                strengthText.className = 'text-sm font-medium text-green-500';
+            }
+
+            return metRequirements >= 4; // At least 4 requirements met for strong password
+        }
+
+        // Email validation
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Password match validation
+        function validatePasswordMatch(password, confirmPassword) {
+            const matchElement = document.getElementById('password-match');
+            if (password === confirmPassword && password.length > 0) {
+                matchElement.textContent = 'Passwords match';
+                matchElement.className = 'mt-1 text-sm text-green-600 dark:text-green-400';
+                matchElement.classList.remove('hidden');
+                return true;
+            } else if (confirmPassword.length > 0) {
+                matchElement.textContent = 'Passwords do not match';
+                matchElement.className = 'mt-1 text-sm text-red-600 dark:text-red-400';
+                matchElement.classList.remove('hidden');
+                return false;
+            } else {
+                matchElement.classList.add('hidden');
+                return false;
+            }
+        }
+
+        // Real-time validation
+        document.getElementById('password').addEventListener('input', (e) => {
+            validatePassword(e.target.value);
+            const confirmPassword = document.getElementById('confirm-password').value;
+            if (confirmPassword) {
+                validatePasswordMatch(e.target.value, confirmPassword);
+            }
+        });
+
+        document.getElementById('confirm-password').addEventListener('input', (e) => {
+            const password = document.getElementById('password').value;
+            validatePasswordMatch(password, e.target.value);
+        });
+
+        document.getElementById('email').addEventListener('blur', (e) => {
+            const emailStatus = document.getElementById('email-status');
+            if (validateEmail(e.target.value)) {
+                emailStatus.textContent = 'Valid email address';
+                emailStatus.className = 'mt-1 text-sm text-green-600 dark:text-green-400';
+                emailStatus.classList.remove('hidden');
+            } else if (e.target.value.length > 0) {
+                emailStatus.textContent = 'Please enter a valid email address';
+                emailStatus.className = 'mt-1 text-sm text-red-600 dark:text-red-400';
+                emailStatus.classList.remove('hidden');
+            } else {
+                emailStatus.classList.add('hidden');
+            }
+        });
+
         // Form submission
         document.getElementById('signup-form').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -215,15 +417,37 @@
                 firstName: document.getElementById('first-name').value,
                 lastName: document.getElementById('last-name').value,
                 email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirm-password').value,
                 company: document.getElementById('company').value,
                 country: document.getElementById('country').value
             };
             
+            // Validate all fields
+            const isPasswordStrong = validatePassword(formData.password);
+            const isEmailValid = validateEmail(formData.email);
+            const doPasswordsMatch = validatePasswordMatch(formData.password, formData.confirmPassword);
+            
+            if (!isPasswordStrong) {
+                alert('Please create a stronger password that meets all requirements.');
+                return;
+            }
+            
+            if (!isEmailValid) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            if (!doPasswordsMatch) {
+                alert('Passwords do not match.');
+                return;
+            }
+            
             // Store in localStorage
             localStorage.setItem('signupData', JSON.stringify(formData));
             
-            // Redirect to next step
-            window.location.href = 'signup-step2.html';
+            // Redirect to email confirmation step
+            window.location.href = 'signup-confirmation.html';
         });
     </script>
 </body>

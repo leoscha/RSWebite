@@ -112,7 +112,7 @@
             <!-- Progress Bar -->
             <div class="mb-8">
                 <div class="flex items-center justify-between mb-2">
-                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Step 2 of 2</span>
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Step 3 of 3</span>
                     <span class="text-sm font-medium text-primary-600 dark:text-primary-400">Plan Selection</span>
                 </div>
                 <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
@@ -124,6 +124,29 @@
             <div class="bg-white dark:bg-dark-800 rounded-xl shadow-lg p-8 md:p-12">
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Choose Your Plan</h1>
                 <p class="text-gray-600 dark:text-gray-400 mb-8">Tell us about your needs to help us recommend the perfect plan for you.</p>
+
+                <!-- Account Summary -->
+                <div class="bg-gray-50 dark:bg-dark-700 rounded-lg p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Account Summary</h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">Name:</span>
+                            <span id="user-name" class="ml-2 font-medium text-gray-900 dark:text-white"></span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">Email:</span>
+                            <span id="user-email" class="ml-2 font-medium text-gray-900 dark:text-white"></span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">Company:</span>
+                            <span id="user-company" class="ml-2 font-medium text-gray-900 dark:text-white"></span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600 dark:text-gray-400">Country:</span>
+                            <span id="user-country" class="ml-2 font-medium text-gray-900 dark:text-white"></span>
+                        </div>
+                    </div>
+                </div>
 
                 <form id="usage-form" class="space-y-8">
                     <!-- Routes per Month -->
@@ -228,6 +251,23 @@
         document.getElementById('mobile-menu-button').addEventListener('click', () => {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Load user data from localStorage and display in account summary
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupData = JSON.parse(localStorage.getItem('signupData') || '{}');
+            
+            if (!signupData.email) {
+                // If no email found, redirect back to signup
+                window.location.href = 'signup.html';
+                return;
+            }
+            
+            // Display user information in account summary
+            document.getElementById('user-name').textContent = `${signupData.firstName || ''} ${signupData.lastName || ''}`.trim();
+            document.getElementById('user-email').textContent = signupData.email || '';
+            document.getElementById('user-company').textContent = signupData.company || '';
+            document.getElementById('user-country').textContent = signupData.country || '';
         });
 
         // Form submission and plan recommendation
