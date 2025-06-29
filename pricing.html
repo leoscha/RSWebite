@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - RouteSurvey</title>
+    <meta name="description" content="Choose the perfect RouteSurvey plan for your heavy haul route surveying needs. Simple, transparent pricing with no hidden fees.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#F0F4FA',
+                            100: '#E2E9F5',
+                            200: '#C5D3EB',
+                            300: '#A8BEE0',
+                            400: '#8BA8D6',
+                            500: '#6E93CC',
+                            600: '#5E72E4', // Secondary accent/highlight color
+                            700: '#3B4A6B', // Primary interactive elements
+                            800: '#2D3A59',
+                            900: '#1F2A47',
+                        },
+                        danger: '#F5365C', // Destructive action color
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome (For icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <span class="text-2xl font-bold text-primary-700">Route<span class="text-primary-600">Survey</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="features.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Features</a>
+                <a href="pricing.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Pricing</a>
+                <a href="about.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">About</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Contact</a>
+                <a href="blog/index.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Blog</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="auth/login.html" class="text-primary-700 hover:text-primary-800 font-medium">Log in</a>
+                <a href="auth/signup.html" class="bg-primary-700 hover:bg-primary-800 text-white font-medium py-2 px-4 rounded-md transition duration-150">Get Started</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-primary-600 focus:outline-none" aria-label="Menu" aria-expanded="false">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full left-0 hidden" aria-hidden="true">
+            <div class="px-4 py-3 space-y-4 border-t">
+                <a href="features.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Features</a>
+                <a href="pricing.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Pricing</a>
+                <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">About</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Contact</a>
+                <a href="blog/index.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Blog</a>
+                <div class="pt-4 border-t border-gray-200 flex flex-col space-y-3">
+                    <a href="auth/login.html" class="block w-full text-center px-4 py-2 border border-primary-600 text-primary-600 rounded-md hover:bg-primary-50">Log in</a>
+                    <a href="auth/signup.html" class="block w-full text-center px-4 py-2 bg-primary-700 text-white rounded-md hover:bg-primary-800">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <!-- Page Header -->
+        <section class="bg-primary-700 text-white py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-center">Simple, Transparent Pricing</h1>
+                <p class="text-xl max-w-3xl mx-auto text-center text-primary-100">Choose the perfect plan for your heavy haul route surveying needs. No hidden fees, no surprises.</p>
+            </div>
+        </section>
+        
+        <!-- Pricing Plans Section -->
+        <section class="py-12 md:py-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <!-- Pricing Toggle -->
+                <div class="flex justify-center mb-12">
+                    <div class="bg-white p-1 rounded-lg shadow-sm inline-flex">
+                        <button class="px-6 py-2 rounded-md bg-primary-700 text-white font-medium">Monthly</button>
+                        <button class="px-6 py-2 rounded-md text-gray-600 hover:text-primary-600 font-medium">Annual (Save 20%)</button>
+                    </div>
+                </div>
+                
+                <!-- Pricing Cards -->
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Standard Plan -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold mb-4 text-primary-800">Standard</h2>
+                            <p class="text-gray-600 mb-6">Perfect for individual heavy haul professionals</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-4xl font-bold text-gray-900">$89</span>
+                                <span class="text-gray-600">/user/month</span>
+                            </div>
+                            
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Single user license</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Unlimited route surveys</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>GPS & GIS integration</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Basic reporting</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Email support</span>
+                                </li>
+                            </ul>
+                            
+                            <a href="auth/signup.html" class="block w-full bg-primary-700 hover:bg-primary-800 text-white text-center font-semibold py-3 px-6 rounded-md shadow-md transition duration-300">
+                                Get Started
+                            </a>
+                        </div>
+                        
+                        <div class="bg-gray-50 px-8 py-4">
+                            <p class="text-sm text-gray-600">14-day free trial, no credit card required</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Plan -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-primary-600">
+                        <div class="bg-primary-600 text-white px-8 py-2 text-center">
+                            <span class="font-semibold">Most Popular</span>
+                        </div>
+                        
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold mb-4 text-primary-800">Advanced</h2>
+                            <p class="text-gray-600 mb-6">For professionals who need more power</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-4xl font-bold text-gray-900">$129</span>
+                                <span class="text-gray-600">/user/month</span>
+                            </div>
+                            
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Single user license</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Everything in Standard, plus:</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Advanced reporting & analytics</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Priority phone support</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Custom branding</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>API access</span>
+                                </li>
+                            </ul>
+                            
+                            <a href="auth/signup.html" class="block w-full bg-primary-700 hover:bg-primary-800 text-white text-center font-semibold py-3 px-6 rounded-md shadow-md transition duration-300">
+                                Get Started
+                            </a>
+                        </div>
+                        
+                        <div class="bg-gray-50 px-8 py-4">
+                            <p class="text-sm text-gray-600">14-day free trial, no credit card required</p>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="p-8">
+                            <h2 class="text-2xl font-bold mb-4 text-primary-800">Enterprise</h2>
+                            <p class="text-gray-600 mb-6">For teams and organizations</p>
+                            
+                            <div class="mb-6">
+                                <span class="text-4xl font-bold text-gray-900">Custom</span>
+                                <span class="text-gray-600">/team/month</span>
+                            </div>
+                            
+                            <ul class="space-y-4 mb-8">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Unlimited team members</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Everything in Advanced, plus:</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Dedicated account manager</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Custom integrations</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Advanced security features</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-primary-600 mt-1 mr-3"></i>
+                                    <span>Training & onboarding</span>
+                                </li>
+                            </ul>
+                            
+                            <a href="contact.html" class="block w-full bg-primary-700 hover:bg-primary-800 text-white text-center font-semibold py-3 px-6 rounded-md shadow-md transition duration-300">
+                                Contact Sales
+                            </a>
+                        </div>
+                        
+                        <div class="bg-gray-50 px-8 py-4">
+                            <p class="text-sm text-gray-600">Custom pricing for your team size</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section class="py-12 md:py-16 bg-gray-50">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Common questions about our pricing and plans</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus:bg-primary-50" onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">Can I change plans later?</span>
+                            <i class="fas fa-chevron-down text-primary-600 faq-toggle-icon"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-4">
+                            <p class="text-gray-600">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle, and we'll prorate the difference.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus:bg-primary-50" onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">What happens after my free trial?</span>
+                            <i class="fas fa-chevron-down text-primary-600 faq-toggle-icon"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-4">
+                            <p class="text-gray-600">After your 14-day free trial, you'll be asked to select a plan to continue using RouteSurvey. Your data and settings will be preserved when you upgrade.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus:bg-primary-50" onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">Do you offer custom plans?</span>
+                            <i class="fas fa-chevron-down text-primary-600 faq-toggle-icon"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-4">
+                            <p class="text-gray-600">Yes, we offer custom Enterprise plans for larger organizations with specific needs. Contact our sales team to discuss your requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden faq-item">
+                        <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none focus:bg-primary-50" onclick="toggleFAQ(this)">
+                            <span class="font-semibold text-lg">What payment methods do you accept?</span>
+                            <i class="fas fa-chevron-down text-primary-600 faq-toggle-icon"></i>
+                        </button>
+                        <div class="faq-answer px-6 pb-4">
+                            <p class="text-gray-600">We accept all major credit cards (Visa, MasterCard, American Express) and PayPal. For annual plans, we can also accommodate bank transfers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="py-12 md:py-16 bg-primary-700 text-white">
+            <div class="container mx-auto px-4 md:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">Join hundreds of heavy haul professionals who are saving time and reducing errors with RouteSurvey.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="auth/signup.html" class="bg-white hover:bg-gray-100 text-primary-700 font-semibold py-3 px-8 rounded-md shadow-lg transition duration-300">
+                        Start Free Trial
+                    </a>
+                    <a href="contact.html" class="bg-transparent hover:bg-white/10 border-2 border-white font-semibold py-3 px-8 rounded-md transition duration-300">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Information -->
+                <div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold text-white">Route<span class="text-primary-400">Survey</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Survey faster. Map smarter. Deliver results that last.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="features.html" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">System Status</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-400"></i>
+                            <span>6608 Gulf Fwy S Ste 600 #145, La Marque TX 77568</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-primary-400"></i>
+                            <span>(409) 977-3636</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-400"></i>
+                            <span>info@routesurvey.app</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright & Legal -->
+            <div class="pt-8 border-t border-gray-800 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2023 RouteSurvey App. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- FAQ Toggle Script -->
+    <script>
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    otherAnswer.style.maxHeight = '0px';
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+            
+            if (faqItem.classList.contains('active')) {
+                // Set max-height to actual content height
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                // Set max-height to 0 to completely hide content
+                answer.style.maxHeight = '0px';
+            }
+        }
+    </script>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+</body>
+</html> 

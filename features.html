@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - RouteSurvey | Mobile App & Web Console</title>
+    <meta name="description" content="Explore RouteSurvey's powerful features across mobile and web platforms. GPS tracking, GIS mapping, automated reporting, and real-time collaboration for heavy haul route surveys.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#F0F4FA',
+                            100: '#E2E9F5',
+                            200: '#C5D3EB',
+                            300: '#A8BEE0',
+                            400: '#8BA8D6',
+                            500: '#6E93CC',
+                            600: '#5E72E4', // Secondary accent/highlight color
+                            700: '#3B4A6B', // Primary interactive elements
+                            800: '#2D3A59',
+                            900: '#1F2A47',
+                        },
+                        dark: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                            600: '#4B5563',
+                            700: '#374151',
+                            800: '#1F2937',
+                            900: '#111827',
+                        },
+                        danger: '#F5365C', // Destructive action color
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome (For icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dark Mode Script -->
+    <script src="js/dark-mode.js"></script>
+</head>
+<body class="font-sans bg-white dark:bg-dark-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <header class="bg-white dark:bg-dark-800 shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <span class="text-2xl font-bold text-primary-700 dark:text-primary-400">Route<span class="text-primary-600 dark:text-primary-300">Survey</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="features.html" class="text-primary-600 dark:text-primary-400 font-medium transition duration-150">Features</a>
+                <a href="pricing.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Pricing</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">About</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Contact</a>
+                <a href="blog/index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Blog</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="auth/login.html" class="text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">Log in</a>
+                <a href="auth/signup.html" class="bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-2 px-4 rounded-md transition duration-150">Get Started</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none" aria-label="Menu" aria-expanded="false">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden bg-white dark:bg-dark-800 shadow-lg absolute w-full left-0 hidden" aria-hidden="true">
+            <div class="px-4 py-3 space-y-4 border-t border-gray-200 dark:border-dark-700">
+                <a href="features.html" class="block px-4 py-2 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-dark-700 rounded-md">Features</a>
+                <a href="pricing.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Pricing</a>
+                <a href="about.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">About</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Contact</a>
+                <a href="blog/index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Blog</a>
+                <div class="pt-4 border-t border-gray-200 dark:border-dark-700 flex flex-col space-y-3">
+                    <a href="auth/login.html" class="block w-full text-center px-4 py-2 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 rounded-md hover:bg-primary-50 dark:hover:bg-dark-700">Log in</a>
+                    <a href="auth/signup.html" class="block w-full text-center px-4 py-2 bg-primary-700 dark:bg-primary-600 text-white rounded-md hover:bg-primary-800 dark:hover:bg-primary-500">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient text-white">
+            <div class="container mx-auto px-4 md:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">Powerful Features Across All Platforms</h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto">From field surveys on mobile devices to comprehensive analysis in the web console, RouteSurvey provides the tools you need to modernize your heavy haul route surveying process.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#mobile-app" class="bg-white text-primary-700 hover:bg-gray-100 font-semibold py-3 px-6 rounded-md shadow-lg transition duration-300">
+                        <i class="fas fa-mobile-alt mr-2"></i>Mobile App Features
+                    </a>
+                    <a href="#web-console" class="bg-transparent hover:bg-white/10 border-2 border-white font-semibold py-3 px-6 rounded-md transition duration-300">
+                        <i class="fas fa-desktop mr-2"></i>Web Console Features
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile App Section -->
+        <section id="mobile-app" class="py-16 md:py-24 bg-gray-50 dark:bg-dark-800">
+            <div class="container mx-auto px-4 md:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full mb-6">
+                        <i class="fas fa-mobile-alt text-2xl text-primary-600 dark:text-primary-400"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Mobile App Features</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Transform your field surveys with our powerful mobile application designed for heavy haul professionals.</p>
+                </div>
+
+                <!-- Feature Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- GPS Tracking -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-map-marker-alt text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Real-Time GPS Tracking</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Accurate GPS positioning with centimeter-level precision for exact route mapping and location recording.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>High-precision GPS coordinates</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Offline mapping support</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Automatic route recording</li>
+                        </ul>
+                    </div>
+
+                    <!-- Photo Documentation -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-camera text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Photo Documentation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Capture high-quality photos with automatic GPS tagging and detailed annotations for comprehensive documentation.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Auto GPS tagging</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Drawing annotations</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Voice notes support</li>
+                        </ul>
+                    </div>
+
+                    <!-- Measurement Tools -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-ruler text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Digital Measurement Tools</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Advanced measurement capabilities including distance, height, width, and clearance calculations.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Laser distance measurement</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Height clearance checks</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Width and turning radius</li>
+                        </ul>
+                    </div>
+
+                    <!-- Offline Capability -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-wifi-slash text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Offline Functionality</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Work in remote areas with full offline capability. Data syncs automatically when connection is restored.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Offline map access</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Local data storage</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Automatic sync</li>
+                        </ul>
+                    </div>
+
+                    <!-- Safety Features -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-shield-alt text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Safety & Compliance</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Built-in safety features and compliance tools to ensure regulatory requirements are met.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Safety checklists</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Compliance tracking</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Emergency contacts</li>
+                        </ul>
+                    </div>
+
+                    <!-- Team Collaboration -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-users text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Team Collaboration</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Real-time collaboration features for team coordination and instant communication.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Real-time messaging</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Location sharing</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Task assignment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Mobile App CTA -->
+                <div class="text-center">
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-bold mb-4">Ready to Transform Your Field Surveys?</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Download the RouteSurvey mobile app and start modernizing your route survey process today.</p>
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">
+                                <i class="fab fa-apple mr-2"></i>Download for iOS
+                            </a>
+                            <a href="#" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">
+                                <i class="fab fa-google-play mr-2"></i>Download for Android
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Console Section -->
+        <section id="web-console" class="py-16 md:py-24 bg-white dark:bg-dark-900">
+            <div class="container mx-auto px-4 md:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full mb-6">
+                        <i class="fas fa-desktop text-2xl text-primary-600 dark:text-primary-400"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Web Console Features</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">Comprehensive web-based platform for data analysis, reporting, and project management.</p>
+                </div>
+
+                <!-- Feature Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Data Visualization -->
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-line text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Advanced Data Visualization</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Interactive maps, charts, and graphs to visualize route data and identify patterns.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Interactive GIS maps</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>3D route visualization</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Custom chart creation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Automated Reporting -->
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-file-alt text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Automated Reporting</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Generate professional reports automatically with customizable templates and branding.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Custom report templates</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>PDF export options</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Scheduled report delivery</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project Management -->
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-project-diagram text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Project Management</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Comprehensive project tracking with team management, timelines, and resource allocation.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Team collaboration tools</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Progress tracking</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Resource management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Data Analytics -->
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-analytics text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Advanced Analytics</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Powerful analytics tools to analyze trends, optimize routes, and improve efficiency.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Trend analysis</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Performance metrics</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Predictive insights</li>
+                        </ul>
+                    </div>
+
+                    <!-- Integration Hub -->
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-plug text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Integration Hub</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Seamless integration with existing systems and third-party applications.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>API access</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Third-party integrations</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Data import/export</li>
+                        </ul>
+                    </div>
+
+                    <!-- User Management -->
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mb-6">
+                            <i class="fas fa-user-cog text-primary-600 dark:text-primary-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">User Management</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Comprehensive user management with role-based access control and permissions.</p>
+                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Role-based access</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Permission management</li>
+                            <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Activity logging</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Web Console CTA -->
+                <div class="text-center">
+                    <div class="bg-gray-50 dark:bg-dark-800 p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
+                        <h3 class="text-2xl font-bold mb-4">Access Your Web Console</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Log into your web console to access advanced analytics, reporting, and project management tools.</p>
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="auth/login.html" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-md transition duration-300">
+                                <i class="fas fa-sign-in-alt mr-2"></i>Log In to Console
+                            </a>
+                            <a href="auth/signup.html" class="bg-white dark:bg-dark-700 hover:bg-gray-50 dark:hover:bg-dark-600 text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 font-semibold py-3 px-6 rounded-md transition duration-300">
+                                <i class="fas fa-user-plus mr-2"></i>Start Free Trial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platform Comparison -->
+        <section class="py-16 md:py-24 bg-gray-50 dark:bg-dark-800">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Platform Comparison</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">See how our mobile app and web console work together to provide a complete route surveying solution.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Mobile App Column -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-mobile-alt text-2xl text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Mobile App</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Field Surveying & Data Collection</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">GPS Tracking & Mapping</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Real-time location tracking and route recording</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Photo Documentation</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">High-quality photos with GPS tagging</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Offline Capability</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Work without internet connection</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Team Communication</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Real-time messaging and location sharing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Console Column -->
+                    <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg">
+                        <div class="text-center mb-8">
+                            <div class="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-desktop text-2xl text-primary-600 dark:text-primary-400"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Web Console</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Analysis, Reporting & Management</p>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Data Visualization</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Interactive maps and advanced analytics</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Automated Reporting</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Professional reports with custom templates</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Project Management</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Team coordination and resource management</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Integration Hub</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Connect with existing systems and tools</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seamless Integration Message -->
+                <div class="text-center mt-12">
+                    <div class="bg-primary-50 dark:bg-primary-900/20 p-8 rounded-xl max-w-4xl mx-auto">
+                        <h3 class="text-2xl font-bold mb-4 text-primary-700 dark:text-primary-400">Seamless Integration</h3>
+                        <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Data collected in the field automatically syncs to your web console, providing real-time insights and enabling instant collaboration across your entire team.</p>
+                        <a href="auth/signup.html" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-md transition duration-300 inline-flex items-center">
+                            <i class="fas fa-rocket mr-2"></i>Get Started Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-16 md:py-24 hero-gradient text-white">
+            <div class="container mx-auto px-4 md:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Modernize Your Route Surveys?</h2>
+                <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto">Join hundreds of heavy haul companies that have transformed their surveying process with RouteSurvey's powerful mobile and web platform.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="auth/signup.html" class="bg-white text-primary-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-md shadow-lg transition duration-300">
+                        Start Free Trial
+                    </a>
+                    <a href="contact.html" class="bg-transparent hover:bg-white/10 border-2 border-white font-semibold py-3 px-8 rounded-md transition duration-300">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <span class="text-2xl font-bold text-primary-400">Route<span class="text-primary-300">Survey</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Modernizing heavy haul route surveys with GPS, GIS, and automation technology.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition duration-150">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition duration-150">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-400 transition duration-150">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="features.html" class="text-gray-400 hover:text-primary-400 transition duration-150">Features</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-primary-400 transition duration-150">Pricing</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary-400 transition duration-150">About</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary-400 transition duration-150">Contact</a></li>
+                        <li><a href="blog/index.html" class="text-gray-400 hover:text-primary-400 transition duration-150">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary-400 transition duration-150">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary-400 transition duration-150">API Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary-400 transition duration-150">Status Page</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary-400 transition duration-150">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">&copy; 2024 RouteSurvey. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary-400 text-sm transition duration-150">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 text-sm transition duration-150">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Script -->
+    <script src="js/navbar.js"></script>
+</body>
+</html> 

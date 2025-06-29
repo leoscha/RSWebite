@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - RouteSurvey</title>
+    <meta name="description" content="Create your RouteSurvey account to start managing your heavy haul routes efficiently.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#F0F4FA',
+                            100: '#E2E9F5',
+                            200: '#C5D3EB',
+                            300: '#A8BEE0',
+                            400: '#8BA8D6',
+                            500: '#6E93CC',
+                            600: '#5E72E4',
+                            700: '#3B4A6B',
+                            800: '#2D3A59',
+                            900: '#1F2A47',
+                        },
+                        dark: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                            600: '#4B5563',
+                            700: '#374151',
+                            800: '#1F2937',
+                            900: '#111827',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dark Mode Script -->
+    <script src="../js/dark-mode.js"></script>
+</head>
+<body class="font-sans bg-white dark:bg-dark-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navigation -->
+    <header class="bg-white dark:bg-dark-800 shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center">
+                <span class="text-2xl font-bold text-primary-700 dark:text-primary-400">Route<span class="text-primary-600 dark:text-primary-300">Survey</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="../features.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Features</a>
+                <a href="../pricing.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Pricing</a>
+                <a href="../about.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">About</a>
+                <a href="../contact.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Contact</a>
+                <a href="../blog/index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Blog</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="login.html" class="text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">Log in</a>
+                <a href="signup.html" class="bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-2 px-4 rounded-md transition duration-150">Get Started</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden bg-white dark:bg-dark-800 shadow-lg absolute w-full left-0 hidden">
+            <div class="px-4 py-3 space-y-4 border-t border-gray-200 dark:border-dark-700">
+                <a href="../features.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Features</a>
+                <a href="../pricing.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Pricing</a>
+                <a href="../about.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">About</a>
+                <a href="../contact.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Contact</a>
+                <a href="../blog/index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Blog</a>
+                <div class="pt-4 border-t border-gray-200 dark:border-dark-700 flex flex-col space-y-3">
+                    <a href="login.html" class="block w-full text-center px-4 py-2 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 rounded-md hover:bg-primary-50 dark:hover:bg-dark-700">Log in</a>
+                    <a href="signup.html" class="block w-full text-center px-4 py-2 bg-primary-700 dark:bg-primary-600 text-white rounded-md hover:bg-primary-800 dark:hover:bg-primary-500">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <div class="container mx-auto px-4 md:px-8 max-w-2xl">
+            <!-- Progress Bar -->
+            <div class="mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Step 1 of 2</span>
+                    <span class="text-sm font-medium text-primary-600 dark:text-primary-400">Account Setup</span>
+                </div>
+                <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
+                    <div class="bg-primary-600 dark:bg-primary-500 h-2 rounded-full" style="width: 50%"></div>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div class="bg-white dark:bg-dark-800 rounded-xl shadow-lg p-8 md:p-12">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Create your account</h1>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">Join RouteSurvey to start managing your heavy haul routes efficiently.</p>
+
+                <form id="signup-form" action="signup-step2.html" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="first-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">First Name</label>
+                            <input type="text" id="first-name" name="first-name" required
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                        </div>
+                        <div>
+                            <label for="last-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" required
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                    </div>
+
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company</label>
+                        <input type="text" id="company" name="company" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                    </div>
+
+                    <div>
+                        <label for="country" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Country</label>
+                        <select id="country" name="country" required
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-dark-600 rounded-md focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-primary-500 dark:focus:border-primary-400 bg-white dark:bg-dark-700 text-gray-900 dark:text-white">
+                            <option value="">Select a country</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="MX">Mexico</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input id="terms" name="terms" type="checkbox" required
+                                class="w-4 h-4 border border-gray-300 dark:border-dark-600 rounded focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 bg-white dark:bg-dark-700 text-primary-600 dark:text-primary-400">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="terms" class="text-gray-600 dark:text-gray-400">
+                                I agree to the <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">Terms of Service</a> and <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-3 px-6 rounded-md transition duration-300">
+                        Continue
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center">
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Already have an account? <a href="login.html" class="text-primary-600 dark:text-primary-400 hover:underline">Log in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-dark-800 border-t border-gray-200 dark:border-dark-700">
+        <div class="container mx-auto px-4 py-8 md:px-8">
+            <div class="text-center">
+                <p class="text-gray-600 dark:text-gray-400">&copy; 2024 RouteSurvey. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form submission
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('first-name').value,
+                lastName: document.getElementById('last-name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                country: document.getElementById('country').value
+            };
+            
+            // Store in localStorage
+            localStorage.setItem('signupData', JSON.stringify(formData));
+            
+            // Redirect to next step
+            window.location.href = 'signup-step2.html';
+        });
+    </script>
+</body>
+</html> 

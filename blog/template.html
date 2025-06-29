@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title - RouteSurvey</title>
+    <meta name="description" content="Article description for SEO purposes">
+    <meta name="keywords" content="relevant, keywords, for, seo">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#F0F4FA',
+                            100: '#E2E9F5',
+                            200: '#C5D3EB',
+                            300: '#A8BEE0',
+                            400: '#8BA8D6',
+                            500: '#6E93CC',
+                            600: '#5E72E4',
+                            700: '#3B4A6B',
+                            800: '#2D3A59',
+                            900: '#1F2A47',
+                        },
+                        danger: '#F5365C',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    typography: {
+                        DEFAULT: {
+                            css: {
+                                maxWidth: '65ch',
+                                color: '#1a202c',
+                                a: {
+                                    color: '#3B4A6B',
+                                    '&:hover': {
+                                        color: '#5E72E4',
+                                    },
+                                },
+                            },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Typography Plugin -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center">
+                <span class="text-2xl font-bold text-primary-700">Route<span class="text-primary-600">Survey</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="../features.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Features</a>
+                <a href="../pricing.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Pricing</a>
+                <a href="../about.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">About</a>
+                <a href="../contact.html" class="text-gray-600 hover:text-primary-600 font-medium transition duration-150">Contact</a>
+                <a href="index.html" class="text-primary-600 font-medium transition duration-150">Blog</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="../auth/login.html" class="text-primary-700 hover:text-primary-800 font-medium">Log in</a>
+                <a href="../auth/signup.html" class="bg-primary-700 hover:bg-primary-800 text-white font-medium py-2 px-4 rounded-md transition duration-150">Get Started</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-primary-600 focus:outline-none" aria-label="Menu">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full left-0 hidden">
+            <div class="px-4 py-3 space-y-4 border-t">
+                <a href="../features.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Features</a>
+                <a href="../pricing.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Pricing</a>
+                <a href="../about.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">About</a>
+                <a href="../contact.html" class="block px-4 py-2 text-gray-700 hover:bg-primary-50 hover:text-primary-600 rounded-md">Contact</a>
+                <a href="index.html" class="block px-4 py-2 text-primary-600 bg-primary-50 rounded-md">Blog</a>
+                <div class="pt-4 border-t border-gray-200 flex flex-col space-y-3">
+                    <a href="../auth/login.html" class="block w-full text-center px-4 py-2 border border-primary-600 text-primary-600 rounded-md hover:bg-primary-50">Log in</a>
+                    <a href="../auth/signup.html" class="block w-full text-center px-4 py-2 bg-primary-700 text-white rounded-md hover:bg-primary-800">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+        <!-- Article Content -->
+        <article class="container mx-auto px-4 md:px-8 max-w-4xl">
+            <!-- Article Header -->
+            <header class="mb-12">
+                <div class="flex items-center space-x-2 text-sm text-gray-600 mb-4">
+                    <a href="index.html" class="hover:text-primary-600">Blog</a>
+                    <span>/</span>
+                    <span>Category</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Blog Post Title</h1>
+                <div class="flex items-center space-x-4 text-gray-600">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-primary-600"></i>
+                        </div>
+                        <span class="font-medium">Author Name</span>
+                    </div>
+                    <span>•</span>
+                    <time datetime="2024-01-01" class="text-gray-500">January 1, 2024</time>
+                    <span>•</span>
+                    <span>5 min read</span>
+                </div>
+            </header>
+
+            <!-- Featured Image -->
+            <div class="rounded-xl overflow-hidden mb-12">
+                <img src="../assets/blog/placeholder.jpg" alt="Blog post featured image" class="w-full h-[400px] object-cover">
+            </div>
+
+            <!-- Article Content -->
+            <div class="prose prose-lg mx-auto">
+                <p class="lead text-xl text-gray-600 mb-8">Your article content goes here. This is a template that you can use for creating new blog posts.</p>
+                
+                <h2>Understanding Our Core Services</h2>
+                <p>Our platform provides a range of services designed to help your business grow and succeed. Here are the key features you should know about:</p>
+                <ul>
+                    <li>Custom Solutions: Tailored to your specific business needs</li>
+                    <li>24/7 Support: Always available when you need assistance</li>
+                    <li>Analytics Dashboard: Track your progress in real-time</li>
+                    <li>Integration Options: Connect with your existing tools</li>
+                </ul>
+                
+                <h2>Best Practices for Success</h2>
+                <p>To get the most out of our services, consider these best practices:</p>
+                <ul>
+                    <li>Regularly review your analytics to track progress</li>
+                    <li>Take advantage of our training resources</li>
+                    <li>Stay updated with our latest features</li>
+                    <li>Engage with our community for tips and insights</li>
+                </ul>
+
+                <blockquote>
+                    <p>Important insight or quote can go here to break up the content and add visual interest.</p>
+                </blockquote>
+
+                <h2>Next Steps</h2>
+                <p>Now that you understand the basics, you're ready to start using our services effectively. Remember that our support team is always available to help you with any questions or concerns you might have along the way.</p>
+            </div>
+
+            <!-- Article Footer -->
+            <footer class="mt-12 pt-8 border-t border-gray-200">
+                <!-- Tags -->
+                <div class="mb-8">
+                    <h3 class="text-sm font-semibold text-gray-600 mb-4">Tagged with:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm hover:bg-primary-100 transition duration-150">guide</a>
+                        <a href="#" class="px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm hover:bg-primary-100 transition duration-150">tutorial</a>
+                        <a href="#" class="px-4 py-2 bg-primary-50 text-primary-700 rounded-full text-sm hover:bg-primary-100 transition duration-150">services</a>
+                    </div>
+                </div>
+
+                <!-- Share Buttons -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-600 mb-4">Share this article:</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-600 hover:text-primary-600 transition duration-150">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary-600 transition duration-150">
+                                <i class="fab fa-linkedin text-lg"></i>
+                            </a>
+                            <a href="#" class="text-gray-600 hover:text-primary-600 transition duration-150">
+                                <i class="fab fa-facebook text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Blog
+                    </a>
+                </div>
+            </footer>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="bg-gray-50 py-16 mt-16">
+            <div class="container mx-auto px-4 md:px-8">
+                <h2 class="text-2xl font-bold mb-8 text-center">Related Articles</h2>
+                <div class="blog-posts grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Posts will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="bg-primary-50 py-16">
+            <div class="container mx-auto px-4 md:px-8 max-w-4xl">
+                <div class="bg-white p-8 md:p-12 rounded-xl shadow-lg text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Stay Updated</h2>
+                    <p class="text-gray-600 mb-8">Subscribe to our newsletter for the latest heavy haul industry insights and updates.</p>
+                    <form class="flex flex-col md:flex-row gap-4 justify-center">
+                        <input type="email" placeholder="Enter your email" class="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:border-transparent flex-grow max-w-md">
+                        <button type="submit" class="bg-primary-700 hover:bg-primary-800 text-white font-medium py-3 px-6 rounded-md transition duration-300">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="container mx-auto px-4 py-12 md:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2 md:col-span-1">
+                    <span class="text-2xl font-bold text-primary-700">Route<span class="text-primary-600">Survey</span></span>
+                    <p class="mt-4 text-gray-600">Modernizing heavy haul route surveys with cutting-edge technology.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../features.html" class="text-gray-600 hover:text-primary-600">Features</a></li>
+                        <li><a href="../pricing.html" class="text-gray-600 hover:text-primary-600">Pricing</a></li>
+                        <li><a href="../about.html" class="text-gray-600 hover:text-primary-600">About</a></li>
+                        <li><a href="../contact.html" class="text-gray-600 hover:text-primary-600">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600">Documentation</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600">API Reference</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-600">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-primary-600"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-primary-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-primary-600"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-600">&copy; 2024 RouteSurvey. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/blog.js"></script>
+</body>
+</html> 

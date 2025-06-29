@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RouteSurvey - Modernizing Heavy Haul Route Surveys</title>
+    <meta name="description" content="RouteSurvey is a SaaS product for the heavy haul industry that modernizes the route survey process with GPS, GIS, detailed note-taking, and automation.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#F0F4FA',
+                            100: '#E2E9F5',
+                            200: '#C5D3EB',
+                            300: '#A8BEE0',
+                            400: '#8BA8D6',
+                            500: '#6E93CC',
+                            600: '#5E72E4', // Secondary accent/highlight color
+                            700: '#3B4A6B', // Primary interactive elements
+                            800: '#2D3A59',
+                            900: '#1F2A47',
+                        },
+                        dark: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                            600: '#4B5563',
+                            700: '#374151',
+                            800: '#1F2937',
+                            900: '#111827',
+                        },
+                        danger: '#F5365C', // Destructive action color
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome (For icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Dark Mode Script -->
+    <script src="js/dark-mode.js"></script>
+</head>
+<body class="font-sans bg-white dark:bg-dark-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Navigation -->
+    <header class="bg-white dark:bg-dark-800 shadow-sm fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <span class="text-2xl font-bold text-primary-700 dark:text-primary-400">Route<span class="text-primary-600 dark:text-primary-300">Survey</span></span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="features.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Features</a>
+                <a href="pricing.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Pricing</a>
+                <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">About</a>
+                <a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Contact</a>
+                <a href="blog/index.html" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition duration-150">Blog</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="auth/login.html" class="text-primary-700 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">Log in</a>
+                <a href="auth/signup.html" class="bg-primary-700 dark:bg-primary-600 hover:bg-primary-800 dark:hover:bg-primary-500 text-white font-medium py-2 px-4 rounded-md transition duration-150">Get Started</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 focus:outline-none" aria-label="Menu" aria-expanded="false">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden bg-white dark:bg-dark-800 shadow-lg absolute w-full left-0 hidden" aria-hidden="true">
+            <div class="px-4 py-3 space-y-4 border-t border-gray-200 dark:border-dark-700">
+                <a href="features.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Features</a>
+                <a href="pricing.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Pricing</a>
+                <a href="about.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">About</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Contact</a>
+                <a href="blog/index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-dark-700 hover:text-primary-600 dark:hover:text-primary-400 rounded-md">Blog</a>
+                <div class="pt-4 border-t border-gray-200 dark:border-dark-700 flex flex-col space-y-3">
+                    <a href="auth/login.html" class="block w-full text-center px-4 py-2 border border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 rounded-md hover:bg-primary-50 dark:hover:bg-dark-700">Log in</a>
+                    <a href="auth/signup.html" class="block w-full text-center px-4 py-2 bg-primary-700 dark:bg-primary-600 text-white rounded-md hover:bg-primary-800 dark:hover:bg-primary-500">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient text-white overflow-hidden">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="flex flex-col md:flex-row items-center">
+                    <!-- Left Column - Text Content -->
+                    <div class="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">Own the Route</h1>
+                        <p class="text-xl md:text-2xl mb-8 opacity-90">Survey faster. Map smarter. Deliver results that last.</p>
+                        <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="auth/signup.html" class="bg-white text-primary-700 hover:bg-gray-100 font-semibold py-3 px-6 rounded-md shadow-lg transition duration-300 text-center">
+                                Get Started Free
+                            </a>
+                            <a href="#how-it-works" class="bg-transparent hover:bg-white/10 border-2 border-white font-semibold py-3 px-6 rounded-md transition duration-300 text-center">
+                                See How It Works
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Image/Illustration -->
+                    <div class="w-full md:w-1/2">
+                        <div class="relative hero-image">
+                            <!-- Placeholder for app screenshot/mockup -->
+                            <img src="https://placehold.co/600x400/3B4A6B/FFFFFF?text=RouteSurvey+App+Screenshot" alt="RouteSurvey App Interface" class="rounded-lg shadow-2xl mx-auto">
+                            
+                            <!-- Floating Elements for Visual Interest -->
+                            <div class="hidden md:block absolute -top-6 -right-6 bg-primary-600 rounded-full p-4 shadow-lg">
+                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                            </div>
+                            <div class="hidden md:block absolute -bottom-8 -left-8 bg-white rounded-full p-4 shadow-lg">
+                                <i class="fas fa-route text-primary-700 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trust Badges/Stats -->
+                <div class="mt-16 pt-8 border-t border-white/20">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold">500+</p>
+                            <p class="text-sm md:text-base opacity-80">Heavy Haul Companies</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold">10,000+</p>
+                            <p class="text-sm md:text-base opacity-80">Routes Surveyed</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold">30%</p>
+                            <p class="text-sm md:text-base opacity-80">Time Saved</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-4xl font-bold">24/7</p>
+                            <p class="text-sm md:text-base opacity-80">Support Available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Problem/Solution Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">The Heavy Haul Surveying Challenge</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Traditional route surveying is time-consuming, error-prone, and difficult to communicate.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <!-- Problems Column -->
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Current Challenges</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-danger mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Manual Documentation</p>
+                                    <p class="text-gray-600">Hours spent on paperwork and manual measurements</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-danger mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Communication Gaps</p>
+                                    <p class="text-gray-600">Difficult to share survey details with team members and clients</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-danger mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Inconsistent Data</p>
+                                    <p class="text-gray-600">Each surveyor has different methods and standards</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-danger mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Human Error</p>
+                                    <p class="text-gray-600">Missing critical measurements or obstacles</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Solution Column -->
+                    <div class="bg-primary-50 p-8 rounded-xl shadow-lg border-l-4 border-primary-600">
+                        <h3 class="text-2xl font-bold mb-6 text-primary-800">The RouteSurvey Solution</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">GPS & GIS Integration</p>
+                                    <p class="text-gray-600">Accurate geographical data collection with precise measurements</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Digital Note-Taking</p>
+                                    <p class="text-gray-600">Structured templates ensure consistent, thorough documentation</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Cloud Collaboration</p>
+                                    <p class="text-gray-600">Instantly share surveys with your team and clients</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Automated Reports</p>
+                                    <p class="text-gray-600">Generate professional survey reports in seconds</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Feature Highlights Section -->
+        <section class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Powerful Features for Heavy Haul Professionals</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to create, manage, and share comprehensive route surveys.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md feature-card transition-all duration-300 hover:shadow-xl">
+                        <div class="bg-primary-50 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-map-marked-alt text-primary-600 text-2xl feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">GPS/GIS Integration</h3>
+                        <p class="text-gray-600 text-center">Capture precise locations, elevations, and measurements with integrated mapping tools.</p>
+                        <div class="mt-4 text-center">
+                            <a href="features.html#gps-gis" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
+                                Learn more
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md feature-card transition-all duration-300 hover:shadow-xl">
+                        <div class="bg-primary-50 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-clipboard-list text-primary-600 text-2xl feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Digital Note-Taking</h3>
+                        <p class="text-gray-600 text-center">Structured templates for consistent documentation of obstacles, clearances, and considerations.</p>
+                        <div class="mt-4 text-center">
+                            <a href="features.html#digital-notes" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
+                                Learn more
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md feature-card transition-all duration-300 hover:shadow-xl">
+                        <div class="bg-primary-50 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-file-export text-primary-600 text-2xl feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Automated Reports</h3>
+                        <p class="text-gray-600 text-center">Generate professional PDF reports with just one click, saving hours of documentation time.</p>
+                        <div class="mt-4 text-center">
+                            <a href="features.html#automated-reports" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
+                                Learn more
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md feature-card transition-all duration-300 hover:shadow-xl">
+                        <div class="bg-primary-50 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fas fa-users text-primary-600 text-2xl feature-icon"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Team Collaboration</h3>
+                        <p class="text-gray-600 text-center">Share surveys instantly with your team, clients, and other stakeholders.</p>
+                        <div class="mt-4 text-center">
+                            <a href="features.html#collaboration" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
+                                Learn more
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="features.html" class="bg-primary-700 hover:bg-primary-800 text-white font-semibold py-3 px-8 rounded-md shadow-md transition duration-300 inline-block">
+                        Explore All Features
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">How RouteSurvey Works</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Four simple steps to transform your heavy haul route survey process</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div class="bg-primary-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto z-10 relative">1</div>
+                        <!-- Connector line -->
+                        <div class="hidden lg:block absolute top-6 left-1/2 w-full h-1 bg-primary-200 -z-10"></div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold mb-3">Plan Your Route</h3>
+                            <p class="text-gray-600">Create a new survey and outline the basic route information.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <div class="bg-primary-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto z-10 relative">2</div>
+                        <!-- Connector line -->
+                        <div class="hidden lg:block absolute top-6 left-1/2 w-full h-1 bg-primary-200 -z-10"></div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold mb-3">Conduct the Survey</h3>
+                            <p class="text-gray-600">Use the mobile app to gather GPS data and record obstacles in real-time.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="relative">
+                        <div class="bg-primary-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto z-10 relative">3</div>
+                        <!-- Connector line -->
+                        <div class="hidden lg:block absolute top-6 left-1/2 w-full h-1 bg-primary-200 -z-10"></div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold mb-3">Add Details</h3>
+                            <p class="text-gray-600">Include measurements, photos, and specific notes about critical points.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="relative">
+                        <div class="bg-primary-700 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mb-6 mx-auto z-10 relative">4</div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold mb-3">Generate & Share</h3>
+                            <p class="text-gray-600">Create a professional report and instantly share with stakeholders.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Demo Video/Screenshot -->
+                <div class="mt-20 max-w-4xl mx-auto">
+                    <div class="bg-gray-200 rounded-xl overflow-hidden shadow-lg aspect-video flex items-center justify-center">
+                        <!-- Placeholder for video or interactive demo -->
+                        <div class="text-center p-8">
+                            <i class="fas fa-play-circle text-5xl text-primary-600 mb-4"></i>
+                            <p class="text-xl font-medium">See RouteSurvey in Action</p>
+                            <p class="text-gray-600 mt-2">Demo video placeholder - in production version, this would be an embedded video or interactive demo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="py-16 md:py-24 bg-primary-50">
+            <div class="container mx-auto px-4 md:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">What Heavy Haul Professionals Say</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Trusted by pilot cars, transporters, and logistics teams nationwide</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md relative testimonial-quote">
+                        <div class="mb-4 text-primary-600">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"RouteSurvey has cut our route planning time in half. The GPS integration and automated reports have completely transformed how we handle heavy load surveys."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4">
+                                <!-- Placeholder for customer avatar -->
+                                <div class="w-full h-full flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-bold">Mike Johnson</p>
+                                <p class="text-sm text-gray-600">Operations Manager, Heavy Haul Logistics</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md relative testimonial-quote">
+                        <div class="mb-4 text-primary-600">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"The digital note-taking feature ensures we never miss critical obstacles. The ability to add photos and precise measurements has improved our accuracy tremendously."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4">
+                                <!-- Placeholder for customer avatar -->
+                                <div class="w-full h-full flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-bold">Sarah Williams</p>
+                                <p class="text-sm text-gray-600">Lead Pilot Car Operator, Safe Routes Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md relative testimonial-quote">
+                        <div class="mb-4 text-primary-600">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-gray-700 mb-6">"Being able to instantly share surveys with our drivers and clients has streamlined our communication. The professional reports give us a competitive edge in the industry."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4">
+                                <!-- Placeholder for customer avatar -->
+                                <div class="w-full h-full flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-bold">David Chen</p>
+                                <p class="text-sm text-gray-600">Fleet Manager, Trans-Global Logistics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Customer Logos -->
+                <div class="mt-16 pt-8 border-t border-gray-300">
+                    <p class="text-center text-gray-500 mb-8">Trusted by industry leaders:</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
+                        <!-- Placeholder logos for demonstration -->
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-md h-16 flex items-center justify-center">
+                                <span class="text-gray-400 font-bold">COMPANY LOGO</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-md h-16 flex items-center justify-center">
+                                <span class="text-gray-400 font-bold">COMPANY LOGO</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-md h-16 flex items-center justify-center">
+                                <span class="text-gray-400 font-bold">COMPANY LOGO</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-white p-4 rounded-md h-16 flex items-center justify-center">
+                                <span class="text-gray-400 font-bold">COMPANY LOGO</span>
+                            </div>
+                        </div>
+                        <div class="text-center hidden lg:block">
+                            <div class="bg-white p-4 rounded-md h-16 flex items-center justify-center">
+                                <span class="text-gray-400 font-bold">COMPANY LOGO</span>
+                            </div>
+                        </div>
+                        <div class="text-center hidden lg:block">
+                            <div class="bg-white p-4 rounded-md h-16 flex items-center justify-center">
+                                <span class="text-gray-400 font-bold">COMPANY LOGO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="py-16 md:py-24 hero-gradient text-white">
+            <div class="container mx-auto px-4 md:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Modernize Your Route Surveys?</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">Join hundreds of heavy haul professionals who are saving time, reducing errors, and improving communication with RouteSurvey.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="auth/signup.html" class="bg-white hover:bg-gray-100 text-primary-700 font-semibold py-3 px-8 rounded-md shadow-lg transition duration-300">
+                        Get Started Free
+                    </a>
+                    <a href="contact.html" class="bg-transparent hover:bg-white/10 border-2 border-white font-semibold py-3 px-8 rounded-md transition duration-300">
+                        Request a Demo
+                    </a>
+                </div>
+                <p class="mt-6 text-sm text-white/80">No credit card required. Free 14-day trial.</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Information -->
+                <div>
+                    <div class="mb-4">
+                        <span class="text-2xl font-bold text-white">Route<span class="text-primary-400">Survey</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Survey faster. Map smarter. Deliver results that last.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="features.html" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="blog/index.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">API Reference</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">System Status</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-400"></i>
+                            <span>6608 Gulf Fwy S Ste 600 #145, La Marque TX 77568</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-primary-400"></i>
+                            <span>(409) 977-3636</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary-400"></i>
+                            <span>info@routesurvey.app</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright & Legal -->
+            <div class="pt-8 border-t border-gray-800 text-sm text-gray-400 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2023 RouteSurvey App. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 flex space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html> 
